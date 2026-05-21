@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bom serialNumber="urn:uuid:9b36247e-beed-4815-8015-1531a97d7a98" version="1" xmlns="http://cyclonedx.org/schema/bom/1.6">
+  <declarations>
+    <assessors>
+      <assessor bom-ref="assessor-1">
+        <thirdParty>true</thirdParty>
+        <organization>
+          <name>Red Hat</name>
+        </organization>
+      </assessor>
+    </assessors>
+    <attestations>
+      <attestation>
+        <summary>Eclipse Temurin CycloneDX Attestation</summary>
+        <assessor>assessor-1</assessor>
+        <map>
+          <claims>
+            <claim>claim-1</claim>
+          </claims>
+        </map>
+      </attestation>
+    </attestations>
+    <claims>
+      <claim bom-ref="claim-1">
+        <target>target-jdk-1</target>
+        <predicate>VERIFIED_REPRODUCIBLE_BUILD</predicate>
+        <evidence>evidence-1</evidence>
+      </claim>
+    </claims>
+    <evidence>
+      <evidence bom-ref="evidence-1">
+        <propertyName>VERIFICATION_LOG</propertyName>
+        <data>
+          <name>log</name>
+          <contents>
+            <attachment content-type="text/plain">Number of files: 60604
+2026-04-29T05:46:07+0000 : Comparing expanded JDKs from /cygdrive/c/comp-jdk-build/compare/src_jdk with /cygdrive/c/comp-jdk-build/compare/tar_jdk ...
+2026-04-29T05:58:23+0000 : diff complete - rc=0.
+Number of differences: 0
+ReproduciblePercent = 100 %
+Successful 100% Reproducible Verification
+Eclipse Temurin version: jdk-25.0.2+10
+                   arch: x64
+                     os: windows
+                 sha256: 06ac5f5444a1269dd11d11cbb7ab6ebaecedc60dc1caca82cdb56f29100b7b8c
+</attachment>
+          </contents>
+        </data>
+      </evidence>
+    </evidence>
+    <targets>
+      <components>
+        <component type="application" bom-ref="target-jdk-1">
+          <name>Temurin jdk-25.0.2+10 x64_windows</name>
+          <version>jdk-25.0.2+10</version>
+          <externalReferences>
+            <reference type="distribution">
+              <url>https://api.adoptium.net/v3/binary/version/jdk-25.0.2+10/windows/x64/jdk/hotspot/normal/eclipse</url>
+              <hashes>
+                <hash alg="SHA-256">06ac5f5444a1269dd11d11cbb7ab6ebaecedc60dc1caca82cdb56f29100b7b8c</hash>
+              </hashes>
+            </reference>
+          </externalReferences>
+          <properties>
+            <property name="platform">x64_windows</property>
+            <property name="imageType">jdk</property>
+            <property name="jvmImpl">hotspot</property>
+          </properties>
+        </component>
+      </components>
+    </targets>
+    <affirmation>
+      <statement>Red Hat confirms a verified reproducible build. This document is signed by the official Red Hat Signing key.</statement>
+    </affirmation>
+  </declarations>
+</bom>
