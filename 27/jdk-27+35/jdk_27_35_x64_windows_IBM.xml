@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bom serialNumber="urn:uuid:7d7052fd-d79e-4d3e-83d6-7e58215bf9f6" version="1" xmlns="http://cyclonedx.org/schema/bom/1.6">
+  <declarations>
+    <assessors>
+      <assessor bom-ref="assessor-1">
+        <thirdParty>true</thirdParty>
+        <organization>
+          <name>IBM</name>
+        </organization>
+      </assessor>
+    </assessors>
+    <attestations>
+      <attestation>
+        <summary>Eclipse Temurin CycloneDX Attestation</summary>
+        <assessor>assessor-1</assessor>
+        <map>
+          <claims>
+            <claim>claim-1</claim>
+          </claims>
+        </map>
+      </attestation>
+    </attestations>
+    <claims>
+      <claim bom-ref="claim-1">
+        <target>target-jdk-1</target>
+        <predicate>VERIFIED_REPRODUCIBLE_BUILD</predicate>
+        <evidence>evidence-1</evidence>
+      </claim>
+    </claims>
+    <evidence>
+      <evidence bom-ref="evidence-1">
+        <propertyName>VERIFICATION_LOG</propertyName>
+        <data>
+          <name>log</name>
+          <contents>
+            <attachment content-type="text/plain">Number of files: 32977
+2026-10-09T15:40:54+0000 : Comparing expanded JDKs from /cygdrive/c/comp-jdk-build/compare/src_jdk with /cygdrive/c/comp-jdk-build/compare/tar_jdk ...
+2026-10-09T15:48:11+0000 : diff complete - rc=0.
+Number of differences: 0
+ReproduciblePercent = 100 %
+Successful 100% Reproducible Verification
+Eclipse Temurin version: jdk-27+35
+                   arch: x64
+                     os: windows
+                 sha256: 2031c9c5c624737ed29a0624caaf5bcc25e74235834c28b4bfa88f7ba7a40e4a
+</attachment>
+          </contents>
+        </data>
+      </evidence>
+    </evidence>
+    <targets>
+      <components>
+        <component type="application" bom-ref="target-jdk-1">
+          <name>Temurin jdk-27+35 x64_windows</name>
+          <version>jdk-27+35</version>
+          <externalReferences>
+            <reference type="distribution">
+              <url>https://api.adoptium.net/v3/binary/version/jdk-27+35/windows/x64/jdk/hotspot/normal/eclipse</url>
+              <hashes>
+                <hash alg="SHA-256">2031c9c5c624737ed29a0624caaf5bcc25e74235834c28b4bfa88f7ba7a40e4a</hash>
+              </hashes>
+            </reference>
+          </externalReferences>
+          <properties>
+            <property name="platform">x64_windows</property>
+            <property name="imageType">jdk</property>
+            <property name="jvmImpl">hotspot</property>
+          </properties>
+        </component>
+      </components>
+    </targets>
+    <affirmation>
+      <statement>IBM has successfully completed a Reproducible Verification of Eclipse Temurin jdk-27+35 for Windows x64.</statement>
+    </affirmation>
+  </declarations>
+</bom>
