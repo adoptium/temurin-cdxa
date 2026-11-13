@@ -72,22 +72,24 @@ jobs:
           if [[ -n "$XML_FILES" ]]; then
             echo "$XML_FILES" | while read XML_FILE; do
               # Validate filename
-              if [[ "$XML_FILE" =~ ^([0-9]+)/jdk-([0-9]+)\.0\.([0-9]+)(\.([0-9]+))?\+([0-9]+)/jdk_([0-9]+)_0_([0-9]+)(_([0-9]+))?_([0-9]+)_([^_]+)_([^_]+)_([^\._]+)\.xml$ ]]; then
+              if [[ "$XML_FILE" =~ ^([0-9]+)/jdk-([0-9]+)\.0\.([0-9]+)(\.([0-9]+)(\.([0-9]+))?)?\+([0-9]+)/jdk_([0-9]+)_0_([0-9]+)(_([0-9]+)(_([0-9]+))?)?_([0-9]+)_([^_]+)_([^_]+)_([^\._]+)\.xml$ ]]; then
                   echo "CDXA file name for update version $XML_FILE"
                   MAJOR_FOLDER=${BASH_REMATCH[1]}
                   TAG_MAJOR_VERSION=${BASH_REMATCH[2]}
                   TAG_UPDATE_VERSION=${BASH_REMATCH[3]}
                   TAG_PATCH_VERSION=${BASH_REMATCH[5]}
-                  TAG_BUILD=${BASH_REMATCH[6]}
-                  MAJOR_VERSION=${BASH_REMATCH[7]}
-                  UPDATE_VERSION=${BASH_REMATCH[8]}
-                  PATCH_VERSION=${BASH_REMATCH[10]}
-                  BUILD_NUM=${BASH_REMATCH[11]}
-                  PLATFORM_ARCH=${BASH_REMATCH[12]}
-                  PLATFORM_OS=${BASH_REMATCH[13]}
-                  ORG=${BASH_REMATCH[14]}
-                  FULL_TAG="jdk-$TAG_MAJOR_VERSION.0.$TAG_UPDATE_VERSION${TAG_PATCH_VERSION:+.$TAG_PATCH_VERSION}+$TAG_BUILD"
-                  JDK_BUILD="jdk-$MAJOR_VERSION.0.$UPDATE_VERSION${PATCH_VERSION:+.$PATCH_VERSION}+$BUILD_NUM"
+                  TAG_EXTRA_VERSION=${BASH_REMATCH[7]}
+                  TAG_BUILD=${BASH_REMATCH[8]}
+                  MAJOR_VERSION=${BASH_REMATCH[9]}
+                  UPDATE_VERSION=${BASH_REMATCH[10]}
+                  PATCH_VERSION=${BASH_REMATCH[12]}
+                  EXTRA_VERSION=${BASH_REMATCH[14]}
+                  BUILD_NUM=${BASH_REMATCH[15]}
+                  PLATFORM_ARCH=${BASH_REMATCH[16]}
+                  PLATFORM_OS=${BASH_REMATCH[17]}
+                  ORG=${BASH_REMATCH[18]}
+                  FULL_TAG="jdk-$TAG_MAJOR_VERSION.0.$TAG_UPDATE_VERSION${TAG_PATCH_VERSION:+.$TAG_PATCH_VERSION}${TAG_EXTRA_VERSION:+.$TAG_EXTRA_VERSION}+$TAG_BUILD"
+                  JDK_BUILD="jdk-$MAJOR_VERSION.0.$UPDATE_VERSION${PATCH_VERSION:+.$PATCH_VERSION}${EXTRA_VERSION:+.$EXTRA_VERSION}+$BUILD_NUM"
               elif [[ "$XML_FILE" =~ ^([0-9]+)/jdk-([0-9]+)\+([0-9]+)/jdk_([0-9]+)_([0-9]+)_([^_]+)_([^_]+)_([^\._]+)\.xml$ ]]; then
                   echo "CDXA file name for new version $XML_FILE"
                   MAJOR_FOLDER=${BASH_REMATCH[1]}
@@ -106,6 +108,7 @@ jobs:
                   echo "ERROR: $XML_FILE file name is not of the correct format:"
                   echo "    N/jdk-M.0.U+B/jdk_M_0_U_B_(Arch)_(OS)_(Your Organisation).xml"
                   echo " or N/jdk-M.0.U.P+B/jdk_M_0_U_P_B_(Arch)_(OS)_(Your Organisation).xml"
+                  echo " or N/jdk-M.0.U.P.E+B/jdk_M_0_U_P_E_B_(Arch)_(OS)_(Your Organisation).xml"
                   echo " or N/jdk-M+B/jdk_M_B_(Arch)_(OS)_(Your Organisation).xml"
                   exit 1
               fi
