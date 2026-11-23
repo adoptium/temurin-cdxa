@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bom serialNumber="urn:uuid:70294e2f-039a-4eac-92a6-ebdc6ba0a87d" version="1" xmlns="http://cyclonedx.org/schema/bom/1.6">
+  <declarations>
+    <assessors>
+      <assessor bom-ref="assessor-1">
+        <thirdParty>true</thirdParty>
+        <organization>
+          <name>IBM</name>
+        </organization>
+      </assessor>
+    </assessors>
+    <attestations>
+      <attestation>
+        <summary>Eclipse Temurin CycloneDX Attestation</summary>
+        <assessor>assessor-1</assessor>
+        <map>
+          <claims>
+            <claim>claim-1</claim>
+          </claims>
+        </map>
+      </attestation>
+    </attestations>
+    <claims>
+      <claim bom-ref="claim-1">
+        <target>target-jdk-1</target>
+        <predicate>VERIFIED_REPRODUCIBLE_BUILD</predicate>
+        <evidence>evidence-1</evidence>
+      </claim>
+    </claims>
+    <evidence>
+      <evidence bom-ref="evidence-1">
+        <propertyName>VERIFICATION_LOG</propertyName>
+        <data>
+          <name>log</name>
+          <contents>
+            <attachment content-type="text/plain">Number of files: 109111
+2026-11-12T16:27:21+0000 : Comparing expanded JDKs from /cygdrive/c/comp-jdk-build/compare/src_jdk with /cygdrive/c/comp-jdk-build/compare/tar_jdk ...
+2026-11-12T16:37:50+0000 : diff complete - rc=0.
+Number of differences: 0
+ReproduciblePercent = 100 %
+Successful 100% Reproducible Verification
+Eclipse Temurin version: jdk-21.0.13+9
+                   arch: x64
+                     os: windows
+                 sha256: a4dbaa05fca4bd89d84584e58c459bd732efebb1722af80ab13c6516832004f9
+</attachment>
+          </contents>
+        </data>
+      </evidence>
+    </evidence>
+    <targets>
+      <components>
+        <component type="application" bom-ref="target-jdk-1">
+          <name>Temurin jdk-21.0.13+9 x64_windows</name>
+          <version>jdk-21.0.13+9</version>
+          <externalReferences>
+            <reference type="distribution">
+              <url>https://api.adoptium.net/v3/binary/version/jdk-21.0.13+9/windows/x64/jdk/hotspot/normal/eclipse</url>
+              <hashes>
+                <hash alg="SHA-256">a4dbaa05fca4bd89d84584e58c459bd732efebb1722af80ab13c6516832004f9</hash>
+              </hashes>
+            </reference>
+          </externalReferences>
+          <properties>
+            <property name="platform">x64_windows</property>
+            <property name="imageType">jdk</property>
+            <property name="jvmImpl">hotspot</property>
+          </properties>
+        </component>
+      </components>
+    </targets>
+    <affirmation>
+      <statement>IBM has successfully completed a Reproducible Verification of Eclipse Temurin jdk-21.0.13+9 for Windows x64.</statement>
+    </affirmation>
+  </declarations>
+</bom>
